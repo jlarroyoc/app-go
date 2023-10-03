@@ -1,6 +1,4 @@
 #!/bin/bash
-
 set -e
-
 pushd /tmp/src
 exec /opt/app-root/gobinary
