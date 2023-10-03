@@ -3,4 +3,7 @@
 set -e
 
 pushd /tmp/src
+echo "hola ............."
+pwd
+ls -l
 exec /opt/app-root/gobinary
