@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	"app-go/controller"
+	"info-go/controller"
 
 	"github.com/gin-gonic/gin"
 )

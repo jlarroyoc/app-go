@@ -1,4 +1,4 @@
-module app-go
+module info-go
 
 go 1.16
 
