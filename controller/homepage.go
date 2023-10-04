@@ -64,6 +64,8 @@ func index(c *gin.Context) {
 
 	hostname, _ := os.Hostname()
 	server, port, _ := net.SplitHostPort(c.Request.Host)
+	if len(server)==0 { server =  c.Request.Header.Get("X-Forwarded-Host") }
+	if (len(port)==0) { port =  c.Request.Header.Get("X-Forwarded-Port") }
 
 	addrs, _ := net.LookupIP(hostname)
         var ipv4 net.IP = nil
