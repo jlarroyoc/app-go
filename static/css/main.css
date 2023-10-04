@@ -1,0 +1,95 @@
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+* {
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    height: 100%;
+    font-family: Raleway-Regular, sans-serif;
+    background-color: #232e4c
+}
+
+
+/*---------------------------------------------*/
+h1,h2,h3,h4,h5 {
+	margin: 0px;
+	color: #005473;
+}
+
+h6 {
+	margin: 0px;
+}
+
+p {
+	font-family: Raleway-Regular;
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+}
+
+ul, li {
+	margin: 0px;
+	list-style-type: none;
+}
+
+svg {
+    fill : #005473;
+	width: 48;
+	height: 48;
+}
+path {
+    fill : #005473;
+	stroke: #005473; 
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ login ]*/
+
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-info100 {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /*padding: 15px;
+    background-color: #ebebeb;*/
+    background-image: url("../images/fondo_intranet.jpg");
+    background-color: #232e4c;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    position: relative;
+}
+
+.wrap-info100 {
+    width: 850px;
+    background: #005473;
+    border-radius: 10px;
+    position: relative;
+}
+
+.p-l-85 {padding-left: 85px;}
+.p-r-85 {padding-right: 85px;}
+.p-b-55 {padding-bottom: 55px;}
+.p-t-55 {padding-top: 55px;}
+.p-b-32 {padding-bottom: 32px;}
+
+

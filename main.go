@@ -13,15 +13,11 @@ func main() {
 	r.Use(gin.Recovery())
 
 	r.Static("/css", "./static/css")
-	r.Static("/img", "./static/img")
-	r.Static("/scss", "./static/scss")
-	r.Static("/vendor", "./static/vendor")
-	r.Static("/js", "./static/js")
-	r.StaticFile("/favicon.ico", "./img/favicon.ico")
+	r.Static("/images", "./static/images")
 
-	r.LoadHTMLGlob("templates/**/*")
+	r.LoadHTMLGlob("templates/*")
 	controller.Router(r)
 
-	log.Println("Server started")
+	log.Println("****************Server started")
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
