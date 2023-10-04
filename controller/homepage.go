@@ -59,14 +59,19 @@ func index(c *gin.Context) {
 	log.Println("***************")
 	log.Println(c.Request.RemoteAddr)
 	log.Println(c.Request.RequestURI)
+	log.Println(c.Request.Host)
 	log.Println(os.Hostname())
+
 	hostname, _ := os.Hostname()
 	server, port, _ := net.SplitHostPort(c.Request.Host)
 
 	addrs, _ := net.LookupIP(hostname)
+        var ipv4 net.IP = nil
 	for _, addr := range addrs {
-		if ipv4 := addr.To4(); ipv4 != nil {
+		ipv4 = addr.To4()
+		if ipv4 != nil {
 			log.Println("IPv4: ", ipv4)
+			break
 		}   
 	}
 
@@ -76,6 +81,7 @@ func index(c *gin.Context) {
 		gin.H{
 			"title": "Geeksbeginner",
 			"localName": hostname, 
+			"localAddr": ipv4, 
 			"serverName": server, 
 			"serverPort": port, 
 			"dateTime": time.Now().Format(time.RFC850), 
