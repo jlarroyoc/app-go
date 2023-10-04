@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 	"net"
-	"encoding/json"
+	"strings"
 	"net/http"
 	"github.com/gin-gonic/gin"
 )
@@ -35,6 +35,10 @@ func writeRequest( req *http.Request) {
 
 	log.Printf("Host: %s\n", req.Host)
 	printHeaders(req.Header)
+	log.Println("")
+	log.Println("RemoteAddr: " + req.RemoteAddr)
+	log.Println("RequestURI: "+req.RequestURI)
+	log.Println("Host: "+ req.Host)
 
 	var body bytes.Buffer
 	io.Copy(&body, req.Body) // nolint:errcheck
@@ -51,21 +55,22 @@ func Router(r *gin.Engine) {
 
 func index(c *gin.Context) {
 
-	res1, _ := json.MarshalIndent(c.Request.Header,"", "\t")
-	log.Println("***************")
-	log.Println(string(res1))
 	log.Println("***************")
 	writeRequest(c.Request)
 	log.Println("***************")
-	log.Println(c.Request.RemoteAddr)
-	log.Println(c.Request.RequestURI)
-	log.Println(c.Request.Host)
-	log.Println(os.Hostname())
 
 	hostname, _ := os.Hostname()
-	server, port, _ := net.SplitHostPort(c.Request.Host)
-	if len(server)==0 { server =  c.Request.Header.Get("X-Forwarded-Host") }
-	if (len(port)==0) { port =  c.Request.Header.Get("X-Forwarded-Port") }
+
+	server :=  c.Request.Header.Get("X-Forwarded-Host") 
+	port :=  c.Request.Header.Get("X-Forwarded-Port") 
+	if len(server)==0 {
+		if strings.Contains(c.Request.Host, ":") {
+		log.Println("**dehh*")
+			server, port, _ = net.SplitHostPort(c.Request.Host)
+   	 	} else {
+			server = c.Request.Host
+		}
+	}
 
 	addrs, _ := net.LookupIP(hostname)
         var ipv4 net.IP = nil
