@@ -18,6 +18,6 @@ func main() {
 	r.LoadHTMLGlob("templates/*")
 	controller.Router(r)
 
-	log.Println("****************Server started")
+	log.Println("****************Server started...")
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
